@@ -64,7 +64,7 @@ namespace BuildMaster
 		}
 
 		// Token: 0x0600004B RID: 75 RVA: 0x000034CD File Offset: 0x000016CD
-		public static void AddRoom(MiniRoom)
+		public static void AddRoom(int id)
 		{
 			JsonConvert.DeserializeObject<List<BuildRoom>>(File.ReadAllText(ConfigUtils.roomsPath)).Add(room);
 			File.WriteAllText(ConfigUtils.roomsPath, JsonConvert.SerializeObject(ConfigUtils.rooms, 1));
