@@ -55,7 +55,7 @@ namespace BuildMaster
 		}
 
 		// Token: 0x06000015 RID: 21 RVA: 0x00002150 File Offset: 0x00000350
-		public void Join(IRoom room)
+		public void Join(JoinRoomArgs room)
 		{
 			if (room.GetPlayerCount() >= room.MaxPlayer)
 			{
