@@ -82,7 +82,7 @@ namespace BuildMaster
 		}
 
 		// Token: 0x06000016 RID: 22 RVA: 0x000021F0 File Offset: 0x000003F0
-		public void Leave(LeaveRoomArgs room)
+		public void Leave()
 		{
 			BuildRoom roomByID = ConfigUtils.GetRoomByID(base.CurrentRoomID);
 			if (roomByID == null)
