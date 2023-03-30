@@ -488,7 +488,7 @@ namespace BuildMaster
 
 		// Token: 0x0400000A RID: 10
 		[JsonIgnore]
-		public System.Timers.Timer = new Timer(1000.0);
+		public System.Timers.Timer timer = new Timer(1000.0);
 
 		// Token: 0x0400000B RID: 11
 		[JsonIgnore]
