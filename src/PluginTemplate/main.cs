@@ -115,8 +115,8 @@ namespace BuildMaster
 			TSPlayer player = args.Player;
 			if (playerByName != null)
 			{
-				BuildRoom roomByID = ConfigUtils.GetRoomByID(playerByName.CurrentRoomID);
-				if (roomByID != null && roomByID.Status == 1)
+				BuildRoom roomByID = (BuildMaster.BuildRoom)ConfigUtils.GetRoomByID(playerByName.CurrentRoomID);
+				if (roomByID != null && roomByID.Status = 1)
 				{
 					ConfigUtils.evaluatePack.RestoreCharacter(playerByName);
 				}
@@ -129,7 +129,7 @@ namespace BuildMaster
 			BuildPlayer playerByName = ConfigUtils.GetPlayerByName(args.Player.Name);
 			if (playerByName != null)
 			{
-				BuildRoom roomByID = ConfigUtils.GetRoomByID(playerByName.CurrentRoomID);
+				BuildRoom roomByID = (BuildMaster.BuildRoom)ConfigUtils.GetRoomByID(playerByName.CurrentRoomID);
 				if (roomByID != null && roomByID.Status != null)
 				{
 					playerByName.SetPVP(false);
@@ -145,14 +145,14 @@ namespace BuildMaster
 			BuildPlayer playerByName = ConfigUtils.GetPlayerByName(args.Player.Name);
 			if (playerByName != null)
 			{
-				BuildRoom roomByID = ConfigUtils.GetRoomByID(playerByName.CurrentRoomID);
-				if (roomByID != null && playerByName.CurrentRegion != null && roomByID.Status == 2 && !playerByName.CurrentRegion.Area.Contains(args.TileX, args.TileY))
+				BuildRoom roomByID = (BuildMaster.BuildRoom)ConfigUtils.GetRoomByID(playerByName.CurrentRoomID);
+				if (roomByID != null && playerByName.CurrentRegion != null && roomByID.Status = 2 && !playerByName.CurrentRegion.Area.Contains(args.TileX, args.TileY))
 				{
 					NetMessage.sendWater(args.TileX, args.TileY);
 					args.Handled = true;
 					playerByName.SendInfoMessage("你不能在别人的区域内恶意倒液体");
 				}
-				if (roomByID != null && roomByID.Status == 1)
+				if (roomByID != null && roomByID.Status = 1)
 				{
 					NetMessage.sendWater(args.TileX, args.TileY);
 					args.Handled = true;
@@ -167,8 +167,8 @@ namespace BuildMaster
 			BuildPlayer playerByName = ConfigUtils.GetPlayerByName(args.Player.Name);
 			if (playerByName != null)
 			{
-				BuildRoom roomByID = ConfigUtils.GetRoomByID(playerByName.CurrentRoomID);
-				if (roomByID != null && playerByName.CurrentRegion != null && roomByID.Status == 2)
+				BuildRoom roomByID = (BuildMaster.BuildRoom)ConfigUtils.GetRoomByID(playerByName.CurrentRoomID);
+				if (roomByID != null && playerByName.CurrentRegion != null && roomByID.Status = 2)
 				{
 					if (args.X == playerByName.CurrentRegion.TopLeft.X || args.Y == playerByName.CurrentRegion.TopLeft.Y || args.X == playerByName.CurrentRegion.BottomRight.X || args.Y == playerByName.CurrentRegion.BottomRight.Y)
 					{
