@@ -57,7 +57,7 @@ namespace BuildMaster
 		// Token: 0x06000015 RID: 21 RVA: 0x00002150 File Offset: 0x00000350
 		public void Join()
                 {
-                       if (BuildRoom room.GetPlayerCount() >= room.MaxPlayer)
+                       if (MiniRoom room.GetPlayerCount() >= room.MaxPlayer)
                        {
                               this.SendInfoMessage("此房间满人了");
                               return;
@@ -72,12 +72,12 @@ namespace BuildMaster
                         this.Leave();
                 }
                 base.Join(room.ID);
-                BuildRoom room.Players.Add(this);
-                BuildRoom room.Broadcast("玩家 " + base.Name + " 加入了房间", Color.MediumAquamarine);
-                this.Teleport(BuildRoom room.WaitingPoint);
-                if (!BuildRoom room.Loaded)
+                MiniRoom room.Players.Add(this);
+                MiniRoom room.Broadcast("玩家 " + base.Name + " 加入了房间", Color.MediumAquamarine);
+                this.Teleport(MiniRoom room.WaitingPoint);
+                if (!MiniRoom room.Loaded)
                 {
-                        BuildRoom room.LoadRegion();
+                        MiniRoom room.LoadRegion()
                 }
              }
 
