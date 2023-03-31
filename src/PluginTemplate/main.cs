@@ -116,7 +116,7 @@ namespace BuildMaster
 			if (playerByName != null)
 			{
 				BuildRoom roomByID = (BuildMaster.BuildRoom)ConfigUtils.GetRoomByID(playerByName.CurrentRoomID);
-				if (roomByID != null && roomByID.Status == 1)
+				if (roomByID?.Status == 1)
 				{
 					ConfigUtils.evaluatePack.RestoreCharacter(playerByName);
 				}
