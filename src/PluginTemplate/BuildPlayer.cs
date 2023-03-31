@@ -52,49 +52,49 @@ namespace BuildMaster
 			this.Locked = false;
 			this.Marked = false;
 			this.AquiredMarks = 0;
-               
-                }
+		}
+
 		// Token: 0x06000015 RID: 21 RVA: 0x00002150 File Offset: 0x00000350
-		public void Join()
-                {
-                       if (MiniRoom room.GetPlayerCount() >= room.MaxPlayer)
-                       {
-                              this.SendInfoMessage("此房间满人了");
-                              return;
-                }
-                if (room.Status != null)
-                {
-                        this.SendInfoMessage("该房间状态无法加入游戏");
-                        return;
-                 }
-                if (ConfigUtils.GetRoomByID(base.CurrentRoomID) != null)
-                {
-                        this.Leave();
-                }
-                base.Join(room.ID);
-                MiniRoom room.Players.Add(this);
-                MiniRoom room.Broadcast("玩家 " + base.Name + " 加入了房间", Color.MediumAquamarine);
-                this.Teleport(MiniRoom room.WaitingPoint);
-                if (!MiniRoom room.Loaded)
-                {
-                        MiniRoom room.LoadRegion()
-                }
-             }
+		public void Join(IRoom room)
+		{
+			if (room.GetPlayerCount() >= room.MaxPlayer)
+			{
+				this.SendInfoMessage("此房间满人了");
+				return;
+			}
+			if (room.Status != null)
+			{
+				this.SendInfoMessage("该房间状态无法加入游戏");
+				return;
+			}
+			if (ConfigUtils.GetRoomByID(base.CurrentRoomID) != null)
+			{
+				this.Leave();
+			}
+			base.Join(room.ID);
+			room.Players.Add(this);
+			room.Broadcast("玩家 " + base.Name + " 加入了房间", Color.MediumAquamarine);
+			this.Teleport(room.WaitingPoint);
+			if (!room.Loaded)
+			{
+				room.LoadRegion();
+			}
+		}
 
 		// Token: 0x06000016 RID: 22 RVA: 0x000021F0 File Offset: 0x000003F0
 		public void Leave()
 		{
-			MiniGamesAPI.Core.MiniRoom roomByID = ConfigUtils.GetRoomByID(base.CurrentRoomID);
+			BuildRoom roomByID = ConfigUtils.GetRoomByID(base.CurrentRoomID);
 			if (roomByID == null)
 			{
 				this.SendInfoMessage("房间不存在");
 				return;
 			}
-			if (room.Status.Equals(null))
-                        {
-                            this.SendInfoMessage("该房间状态无法加入游戏");
-                            return;
-                         }
+			if (roomByID.Status != null)
+			{
+				this.SendInfoMessage("该房间状态无法离开游戏");
+				return;
+			}
 			roomByID.Players.Remove(this);
 			roomByID.Broadcast("玩家 " + base.Name + " 离开了房间", Color.Crimson);
 			this.Teleport(Main.spawnTileX, Main.spawnTileY);
