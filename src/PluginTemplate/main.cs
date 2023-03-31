@@ -202,12 +202,9 @@ namespace BuildMaster
 				BuildRoom roomByID = ConfigUtils.GetRoomByID(playerByName.CurrentRoomID) as BuildRoom;
 				if (roomByID != null && roomByID.Status == 2 && playerByName.CurrentRegion != null)
 				{
-					Point point;
-					point..ctor(args.Player.TileX, args.Player.TileY);
-					Point point2;
-					point2..ctor(args.Player.TileX, args.Player.TileY + 1);
-					Point point3;
-					point3..ctor(args.Player.TileX, args.Player.TileY + 2);
+					Point point = new Point(args.Player.TileX, args.Player.TileY);
+                                        Point point2 = new Point(args.Player.TileX, args.Player.TileY + 1);
+                                        Point point3 = new Point(args.Player.TileX, args.Player.TileY + 2);
 					if (!playerByName.CurrentRegion.Area.Contains(point) && !playerByName.CurrentRegion.Area.Contains(point2) && !playerByName.CurrentRegion.Area.Contains(point3) && !playerByName.Locked)
 					{
 						playerByName.Teleport(playerByName.CurrentRegion.Center);
