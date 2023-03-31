@@ -52,8 +52,7 @@ namespace BuildMaster
 			this.Locked = false;
 			this.Marked = false;
 			this.AquiredMarks = 0;
-                MiniGamesAPI.Core.MiniRoom miniRoom = new MiniGamesAPI.Core.MiniRoom();
-                BuildMaster.BuildRoom buildRoom = (BuildMaster.BuildRoom)miniRoom;
+               
                 }
 		// Token: 0x06000015 RID: 21 RVA: 0x00002150 File Offset: 0x00000350
 		public void Join()
@@ -91,11 +90,11 @@ namespace BuildMaster
 				this.SendInfoMessage("房间不存在");
 				return;
 			}
-			if (roomByID.Status != null)
-			{
-				this.SendInfoMessage("该房间状态无法离开游戏");
-				return;
-			}
+			if (room.Status.Equals(null))
+                        {
+                            this.SendInfoMessage("该房间状态无法加入游戏");
+                            return;
+                         }
 			roomByID.Players.Remove(this);
 			roomByID.Broadcast("玩家 " + base.Name + " 离开了房间", Color.Crimson);
 			this.Teleport(Main.spawnTileX, Main.spawnTileY);
