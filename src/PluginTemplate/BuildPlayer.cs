@@ -56,30 +56,30 @@ namespace BuildMaster
                 }
 		// Token: 0x06000015 RID: 21 RVA: 0x00002150 File Offset: 0x00000350
 		public void Join()
-		{
-			if (BuildRoom room.GetPlayerCount() >= room.MaxPlayer);
-			{
-				this.SendInfoMessage("此房间满人了");
-				return;
-			}
-			if (room.Status != null)
-			{
-				this.SendInfoMessage("该房间状态无法加入游戏");
-				return;
-			}
-			if (ConfigUtils.GetRoomByID(base.CurrentRoomID) != null)
-			{
-				this.Leave();
-			}
-			base.Join(room.ID);
-			BuildRoom room.Players.Add(this),
-			BuildRoom room.Broadcast("玩家 " + base.Name + " 加入了房间", Color.MediumAquamarine),
-			this.Teleport(BuildRoom room.WaitingPoint),
-			if (!BuildRoom room.Loaded);
-			{
-				BuildRoom room.LoadRegion();
-			}
-		}
+                {
+                       if (BuildRoom room.GetPlayerCount() >= room.MaxPlayer)
+                       {
+                              this.SendInfoMessage("此房间满人了");
+                              return;
+                }
+                if (room.Status != null)
+                {
+                        this.SendInfoMessage("该房间状态无法加入游戏");
+                        return;
+                 }
+                if (ConfigUtils.GetRoomByID(base.CurrentRoomID) != null)
+                {
+                        this.Leave();
+                }
+                base.Join(room.ID);
+                BuildRoom room.Players.Add(this);
+                BuildRoom room.Broadcast("玩家 " + base.Name + " 加入了房间", Color.MediumAquamarine);
+                this.Teleport(BuildRoom room.WaitingPoint);
+                if (!BuildRoom room.Loaded)
+                {
+                        BuildRoom room.LoadRegion();
+                }
+             }
 
 		// Token: 0x06000016 RID: 22 RVA: 0x000021F0 File Offset: 0x000003F0
 		public void Leave()
