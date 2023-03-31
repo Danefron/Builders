@@ -16,19 +16,19 @@ namespace BuildMaster
 			if (!Directory.Exists(ConfigUtils.configDir))
 			{
 				Directory.CreateDirectory(ConfigUtils.configDir);
-				File.WriteAllText(ConfigUtils.roomsPath, JsonConvert.SerializeObject(ConfigUtils.rooms, 1));
-				File.WriteAllText(ConfigUtils.evaluatePath, JsonConvert.SerializeObject(ConfigUtils.evaluatePack, 1));
-				File.WriteAllText(ConfigUtils.defaultPath, JsonConvert.SerializeObject(ConfigUtils.defaultPack, 1));
-				File.WriteAllText(ConfigUtils.configPath, JsonConvert.SerializeObject(ConfigUtils.config, 1));
+				File.WriteAllText(ConfigUtils.roomsPath, JsonConvert.SerializeObject(ConfigUtils.rooms, Newtonsoft.Json.Formatting.Indented));
+				File.WriteAllText(ConfigUtils.evaluatePath, JsonConvert.SerializeObject(ConfigUtils.evaluatePack, Newtonsoft.Json.Formatting.Indented));
+				File.WriteAllText(ConfigUtils.defaultPath, JsonConvert.SerializeObject(ConfigUtils.defaultPack, Newtonsoft.Json.Formatting.Indented));
+				File.WriteAllText(ConfigUtils.configPath, JsonConvert.SerializeObject(ConfigUtils.config, Newtonsoft.Json.Formatting.Indented));
 				return;
 			}
 			if (File.Exists(ConfigUtils.roomsPath))
 			{
-				ConfigUtils.rooms = JsonConvert.DeserializeObject<List<BuildRoom>>(File.ReadAllText(ConfigUtils.roomsPath));
+				List<BuildRoom> rooms = JsonConvert.DeserializeObject<List<BuildRoom>>(File.ReadAllText(ConfigUtils.roomsPath));
 			}
 			else
 			{
-				File.WriteAllText(ConfigUtils.roomsPath, JsonConvert.SerializeObject(ConfigUtils.rooms, 1));
+				File.WriteAllText(ConfigUtils.roomsPath, JsonConvert.SerializeObject(ConfigUtils.rooms, Newtonsoft.Json.Formatting.Indented));
 			}
 			if (File.Exists(ConfigUtils.evaluatePath))
 			{
@@ -36,7 +36,7 @@ namespace BuildMaster
 			}
 			else
 			{
-				File.WriteAllText(ConfigUtils.evaluatePath, JsonConvert.SerializeObject(ConfigUtils.evaluatePack, 1));
+				File.WriteAllText(ConfigUtils.evaluatePath, JsonConvert.SerializeObject(ConfigUtils.evaluatePack, Newtonsoft.Json.Formatting.Indented));
 			}
 			if (File.Exists(ConfigUtils.defaultPath))
 			{
@@ -124,7 +124,7 @@ namespace BuildMaster
 		public static readonly string configPath = ConfigUtils.configDir + "/config.json";
 
 		// Token: 0x04000020 RID: 32
-		public static List<MiniRoom> rooms = new List<Miniroom>();
+		public static List<MiniRoom> rooms = new List<MiniRoom>();
 
 		// Token: 0x04000021 RID: 33
 		public static List<MiniPlayer> players = new List<MiniPlayer>();
