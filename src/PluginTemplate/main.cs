@@ -98,7 +98,7 @@ namespace BuildMaster
 			BuildPlayer playerByName = ConfigUtils.GetPlayerByName(args.Player.Name);
 			if (playerByName != null)
 			{
-				BuildRoom roomByID = ConfigUtils.GetRoomByID(playerByName.CurrentRoomID);
+				BuildRoom roomByID = (BuildMaster.BuildRoom)ConfigUtils.GetRoomByID(playerByName.CurrentRoomID);
 				if (roomByID != null && roomByID.Status != null)
 				{
 					playerByName.SetTeam(0);
