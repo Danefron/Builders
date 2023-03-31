@@ -80,7 +80,7 @@ namespace BuildMaster
 		private void OnChat(ServerChatEventArgs args)
 		{
 			BuildPlayer playerByName = ConfigUtils.GetPlayerByName(TShock.Players[args.Who].Name);
-			MiniGamesAPI.Core.MiniRoom roomByID = ConfigUtils.GetRoomByID(base.CurrentRoomID);
+			MiniRoom roomByID = ConfigUtils.GetRoomByID(base.CurrentRoomID);
 			if (args.Text.StartsWith(TShock.Config.Settings.CommandSilentSpecifier) || args.Text.StartsWith(TShock.Config.Settings.CommandSpecifier))
 			{
 				return;
