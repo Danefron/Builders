@@ -146,13 +146,13 @@ namespace BuildMaster
 			if (playerByName != null)
 			{
 				BuildRoom roomByID = (BuildMaster.BuildRoom)ConfigUtils.GetRoomByID(playerByName.CurrentRoomID);
-				if (roomByID != null && playerByName.CurrentRegion != null && roomByID.Status == 2 && !playerByName.CurrentRegion.Area.Contains(args.TileX, args.TileY))
+				if (roomByID?.Status == 2 && playerByName?.CurrentRegion?.Area?.Contains(args.TileX, args.TileY) ?? false)
 				{
 					NetMessage.sendWater(args.TileX, args.TileY);
 					args.Handled = true;
 					playerByName.SendInfoMessage("你不能在别人的区域内恶意倒液体");
 				}
-				if (roomByID != null && roomByID.Status == 1)
+				if (roomByID?.Status == 1)
 				{
 					NetMessage.sendWater(args.TileX, args.TileY);
 					args.Handled = true;
