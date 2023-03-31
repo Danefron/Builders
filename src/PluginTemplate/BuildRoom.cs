@@ -492,10 +492,10 @@ namespace BuildMaster
 
 		// Token: 0x0400000B RID: 11
 		[JsonIgnore]
-		public Timer Gaming_Timer = new Timer(1000.0);
+		public System.Timers.Timer Gaming_Timer = new System.Timers.Timer(1000.0);
 
 		// Token: 0x0400000C RID: 12
 		[JsonIgnore]
-		public Timer Scoring_Timer = new Timer(1000.0);
+		public System.Timers.Timer Scoring_Timer = new System.Timers.Timer(1000.0);
 	}
 }
